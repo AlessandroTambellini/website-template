@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caronte</title>
+    <link rel="stylesheet" href="assets/_universal.css">
+    <style>
+        
+        table {
+            position: relative;
+        }
+
+        /* Styling taken from draw-algos. May be handy */
+        /* #results-table {
+            margin-block: 2em;
+            text-align: right;
+            display: block;
+            max-width: 100%;
+            overflow-x: auto;
+            width: max-content;
+        }
+
+        #results-table thead {
+            margin-inline: auto;
+        }
+
+        thead th {
+            padding-bottom: .5em;
+        }
+
+        th:not(:last-child) {
+            padding-right: 3ch;
+        }
+        td {
+            padding-right: 4ch;
+        }
+        td:nth-child(2) {
+            padding-right: 3ch;
+        }
+        td:last-child {
+            padding-right: 1ch;
+        } */
+        
+        /* 
+        Table stickness of data */
+
+        thead th {
+            padding-inline: 1ch;
+            position: sticky;
+            top: 0;
+            /* Because Rank and Club have z-index:1 */
+            z-index: 2;
+            /* Important: needs background to cover scrolling content */
+            /* background-color: inherit;  */
+        }
+
+        thead th:nth-child(2) {
+            position: sticky;
+            z-index: 3;
+            /* background-color: white; */
+        }
+
+        thead th:nth-child(2) {
+            left: 0;
+        }
+
+        tbody td {
+            padding: .25em 1em;
+        }
+
+        /* Sticky Club */
+        tbody td:first-of-type {
+            position: sticky;
+            left: 0;
+            background-color: inherit; /* Inherits the row's background color */
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    {{ #website-header }}
+
+    <main>
+        <table id="results-table">
+            <caption>
+                Best F1 Driver
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Points Lost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Hamilton</td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Leclerc</td>
+                    <td>22</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Verstappen</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Ocon</td>
+                    <td>69</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>Bearman</td>
+                    <td>72</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h1>Caronte</h1>
+        <p id="intro-text">
+            Lorem ipsum dolor sit amet consectetur adipiscing elit porttitor,
+            pretium ante curae aenean placerat libero facilisis nunc vitae, luctus neque diam duis dis quis lacinia. Lacus augue
+            porttitor eu sapien molestie morbi velit quisque placerat, lobortis sem himenaeos class ridiculus diam mi mauris
+            est, aliquet nulla enim nullam dictumst nam vel varius. Tincidunt semper vestibulum integer cum non platea duis
+            tortor, malesuada laoreet venenatis senectus ante justo aliquam.
+        </p>
+        <p>CEST Time: {{ cest-time }}</p>
+    </main>
+
+    {{ #website-footer }}
+</body>
+</html>

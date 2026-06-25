@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caronte / rtc</title>
+    <link rel="stylesheet" href="assets/_universal.css">
+    <style>
+    </style>
+</head>
+<body>
+    <h1>rtc</h1>
+
+    <script>
+        localConnection = new RTCPeerConnection();
+
+        sendChannel = localConnection.createDataChannel("sendChannel");
+        sendChannel.onopen = handleSendChannelStatusChange;
+        sendChannel.onclose = handleSendChannelStatusChange;
+    </script>
+</body>
+</html>

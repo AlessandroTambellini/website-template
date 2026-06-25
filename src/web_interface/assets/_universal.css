@@ -1,0 +1,253 @@
+@font-face {
+    src: 
+        url('fonts/Libertinus_Mono/LibertinusMono-Regular.ttf') 
+        format('truetype');
+    font-family: TextFont;
+    /* In case of slow network, 
+    let the browser decide if it's worth trying to load the font */
+    font-display: auto;
+}
+@font-face {
+    src: 
+        url('fonts/Playwrite_DE_Grund/PlaywriteDEGrund-Regular.ttf') 
+        format('truetype');
+    font-family: LinkFont;
+    font-display: auto;
+}
+@font-face {
+    src: 
+        url('fonts/Source_Code_Pro/SourceCodePro-Regular.ttf') 
+        format('truetype');
+    font-family: CodeFont;
+    font-display: auto;
+}
+
+:root {
+    /* This is the color-scheme that is used unless specified by the user.
+    E.g. when the user opens the website for the first time, he hasn't specified any color scheme yet;
+    So, the browser chooses it for him */
+    color-scheme: light dark;
+    --text-color: light-dark(#343A40, #f9fafb); 
+    --link-color: light-dark(#551a8b, #aae574);
+    --page-background: light-dark(#f9f9f9, #1a1c20);
+    --btn-bkg-color: light-dark(#e8e8e8, #171717);
+    --code-color: light-dark(#4fb1b1, #ff5b5b);
+    --server-error-msg: light-dark(#cb0000, #ff0000);
+    --server-success-msg: light-dark(#008000, #00ff00);
+}
+
+:root.light-mode {
+    /* It is important to specify the color-scheme,
+    so the browser knows how to render elements for which I don't specify any color */
+    color-scheme: light;
+    --text-color: #343A40;
+    --link-color: #551a8b;
+    --page-background: #f9f9f9;
+    --btn-bkg-color: #e8e8e8;
+    --code-color: #4fb1b1;
+    --server-error-msg: #cb0000;
+    --server-success-msg: #008000;
+}
+:root.dark-mode {
+    color-scheme: dark;
+    --text-color: #f9fafb;
+    --link-color: #aae574;
+    --page-background: #1a1c20;
+    --btn-bkg-color: #171717;
+    --code-color: #ff5b5b;
+    --server-error-msg: #ff0000;
+    --server-success-msg: #00ff00;
+}
+
+body {
+    font-family: TextFont, serif;
+    /* Usually I zoom the websites to 140%; 
+    So, this is the font-size I want */
+    font-size: 1.4rem;
+    word-break: break-word;
+    color: var(--text-color);
+    background-color: var(--page-background);
+    padding: 1em;
+    margin: 0;
+}
+
+main {
+    width: fit-content;
+    margin-inline: auto;
+}
+
+/* This is my favourite way to understand if a device is a mobile one;
+Because the problem is not the size of the screen per se,
+but the distance from which the user looks at the screen and the way
+he interacts with it. 
+When I shrink a tab on my laptop, 
+I don't really want the text to get smaller.
+So, why is there also a '(max-width: 500px)'? 
+Because for tablets is fine the default styling */
+@media (hover: none) and (pointer: coarse) and (max-width: 500px) {
+    body {
+        font-size: 1.2rem;
+    }
+}
+
+p, li {
+    max-width: 70ch;
+    hyphens: auto;
+    line-height: 1.4;
+}
+p {
+    width: min(70ch, 100%);
+    hyphens: auto;
+    line-height: 1.4;
+    /* white-space: pre-wrap; */
+    /* A little detail, that in some cases gives the paragraph a better shape */
+    text-wrap: pretty;
+}
+a {
+    font-family: LinkFont, sans-serif;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: var(--link-color);
+}
+button {
+    font-family: CodeFont, monospace;
+    font-size: smaller;
+    text-transform: uppercase;
+    /* To now wrap the button text */
+    white-space: nowrap;
+    cursor: pointer;
+    color: inherit;
+    background-color: var(--btn-bkg-color);
+}
+label {
+    font-size: smaller;
+    text-transform: capitalize;
+}
+code {
+    font-family: CodeFont, monospace;
+    color: var(--code-color);
+}
+
+a[rel=help] {
+    cursor: help;
+}
+a:hover {
+    text-decoration: underline;
+}
+button:disabled {
+    cursor: not-allowed;
+    opacity: .7;
+}
+
+.info-msg {
+    text-align: center;
+    margin-inline: auto;
+}
+.server-msg.success {
+    color: var(--server-success-msg);
+}
+.server-msg.error {
+    color: var(--server-error-msg);
+}
+
+.display-block {
+    display: block;
+}
+.display-none {
+    display: none;
+}
+
+/*
+ *
+ *  Header & Footer
+ */
+
+#website-header,
+#website-footer {
+    max-width: 100ch;
+    margin-inline: auto;
+}
+
+#website-header {
+    padding-bottom: 1em;
+    display: flex;
+}
+
+#website-header > nav {
+    display: flex;
+    gap: 4ch;
+    word-break: keep-all;    
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-right: 1em;   
+    margin-right: 1ch;
+    padding-block: .1em;
+}
+
+@media (hover: none) and (pointer: coarse) and (max-width: 500px) {
+    #website-header > nav {
+        gap: 2ch;
+    }
+}
+
+#website-header > nav > * {
+    flex-shrink: 0;
+}
+
+#website-header > button {
+    width: 7ch;
+}
+#website-header > button:first-of-type {
+    margin-left: auto;
+    border-right: none;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+#website-header > button:last-of-type {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+#dark-mode-btn {
+    color-scheme: dark;
+}
+#light-mode-btn {
+    color-scheme: light;
+}
+
+#website-footer {
+    text-align: right;
+}
+#website-footer small {
+    display: inline-block;
+    padding-top: 1em;
+}
+#website-footer small a:first-child {
+    margin-right: 2ch
+}
+
+/*  */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+input,
+textarea {
+    font: inherit;
+    padding: 1ch 1em;
+}
+textarea {
+    hyphens: auto;
+    line-height: 1.4;
+    /* This feature has limited support among browsers, 
+    but it's so handy that I use it anyway. */
+    field-sizing: content;
+}
+textarea:focus-visible {
+    outline: none;
+}
+form > button[type=submit] {
+    display: block;
+    margin-left: auto;
+}
