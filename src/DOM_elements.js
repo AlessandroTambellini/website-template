@@ -75,7 +75,7 @@ DOM_elements['#website-header'] = link_to_exclude =>
 DOM_elements['#website-footer'] = curr_page =>
 {
     const links = [
-        '<a href="https://github.com/AlessandroTambellini/caronte" rel="external" target="_blank">source code</a>',
+        '<a href="https://github.com/AlessandroTambellini/website-template" rel="external" target="_blank">source code</a>',
         // ['sponsor-project', '<a rel="external" target="_blank" href="https://github.com/sponsors/AlessandroTambellini">sponsor project</a>'],
     ];
 
