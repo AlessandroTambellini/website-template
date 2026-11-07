@@ -1,7 +1,11 @@
 /*
-- Trying to count the number of lines of HTML and JS simply considering the file extension is misleading,
-because there are JS files with HTML templates and HTML files with JS scripts inside.
-- In the lines count, empty lines are considered because they are part of the process of reading the code
+Some notes:
+- HTML files may contain JS code and JS files may contain HTML. 
+So, trying to consider them separately may be misleading, 
+would require this program to be more complex and I don't even think is worth it,
+considering their intrinsicness. 
+Therefore, I count them together: HTML+JS lines. 
+- In the line count, empty lines are counted because they are part of the process of reading the code
 
 Compilation: gcc -Wall -Wextra -std=c11 src-info.c -o src-info
 Execution: src-info [<directory>]

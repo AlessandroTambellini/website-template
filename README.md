@@ -1,6 +1,7 @@
 # Website Template
+Website template in Node.js
 
-## Run Project
+## Run 
 In the root folder:
 1. `chmod u+x run.sh`
 2. `./run.sh`
